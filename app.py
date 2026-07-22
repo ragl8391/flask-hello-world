@@ -19,3 +19,22 @@ def db_test():
     finally:
         if conn is not None:
             conn.close()
+
+@app.route("/db_create")
+def creating():
+    DATABASE_URL = os.environ.get("DATABASE_URL")
+    conn = psycopg2.connect(DATABASE_URL)
+
+    cur = conn.cursor()
+    curr.execute('''
+    INSERT INTO Basketball (First, Last, City, Name, Number)
+    VALUES
+    ('Jayson', 'Tatum', 'Boston', 'Celtics', 0),
+    ('Stephen', 'Curry', 'San Francisco', 'Warriors', 30),
+    ('Nikola', 'Jokic', 'Denver', 'Nuggets', 15),
+    ('Kawhi', 'Leonard', 'Los Angeles', 'Clippers', 2),
+    ('Rachael', 'Glazner', 'CU Boulder', 'Buffs', 3308)
+    ''')
+    conn.commit()
+    conn.close()
+    return "Basketball Table Successfully Populated"
