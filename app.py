@@ -38,8 +38,9 @@ def creating():
     conn.commit()
     conn.close()
     return "Basketball Table Successfully Created"
+
 @app.route("/db_insert")
-def creating():
+def inserting():
     DATABASE_URL = os.environ.get("DATABASE_URL")
     conn = psycopg2.connect(DATABASE_URL)
 
