@@ -27,6 +27,24 @@ def creating():
 
     cur = conn.cursor()
     cur.execute('''
+    CREATE TABLE IF NOT EXISTS Basketball (
+    First varchar(255),
+    Last varchar(255),
+    City varahcar(255),
+    Name varchar(255),
+    Number int
+    );
+    ''')
+    conn.commit()
+    conn.close()
+    return "Basketball Table Successfully Created"
+@app.route("/db_insert")
+def creating():
+    DATABASE_URL = os.environ.get("DATABASE_URL")
+    conn = psycopg2.connect(DATABASE_URL)
+
+    cur = conn.cursor()
+    cur.execute('''
     INSERT INTO Basketball (First, Last, City, Name, Number)
     VALUES
     ('Jayson', 'Tatum', 'Boston', 'Celtics', 0),
