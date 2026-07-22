@@ -26,7 +26,7 @@ def creating():
     conn = psycopg2.connect(DATABASE_URL)
 
     cur = conn.cursor()
-    curr.execute('''
+    cur.execute('''
     INSERT INTO Basketball (First, Last, City, Name, Number)
     VALUES
     ('Jayson', 'Tatum', 'Boston', 'Celtics', 0),
